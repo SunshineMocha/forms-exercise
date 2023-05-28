@@ -1,3 +1,25 @@
-.example-spacer {
-  flex: 1 1 auto;
+body{
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.title-container{
+  display: flex;
+  justify-content: center;
+}
+.registration-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.registration-card{
+  height: 100%;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+footer{
+  margin-top: auto;
 }

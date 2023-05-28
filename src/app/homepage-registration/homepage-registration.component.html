@@ -1,16 +1,70 @@
 <body class="mat-app-background">
-  <p>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="title-container">
       <span>Registration</span>
     </mat-toolbar>
-  </p>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Registration Form</mat-card-title>
-      <mat-card-subtitle>This is a mock page</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-actions align="end">
-      <button mat-button>SIGN ME</button>
+  <mat-card class="registration-card">
+    <!-- START OF FORM  -->
+    <form [formGroup]="formGroup" (ngSubmit)="submitForm()">
+    Name
+    <mat-form-field class="registration-form">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Mario" formControlName="name">
+    </mat-form-field>
+
+    Surname
+    <mat-form-field class="registration-form">
+      <mat-label>Surname</mat-label>
+      <input matInput placeholder="Mario" formControlName="surname">
+    </mat-form-field>
+
+    Email
+    <mat-form-field class="registration-form">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="email.hasError('required')">
+        Email is required
+      </mat-error>
+    </mat-form-field>
+
+    Birthday
+    <mat-form-field class="registration-form">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dob">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    Topics
+    <mat-chip-listbox class="registration-form" aria-label="Topics" multiple="true" formControlName="topics">
+      <mat-chip-option>Animal Crossing</mat-chip-option>
+      <mat-chip-option>Fire Emblem</mat-chip-option>
+      <mat-chip-option>Pokemon</mat-chip-option>
+      <mat-chip-option>Splatoon</mat-chip-option>
+      <mat-chip-option>Super Mario</mat-chip-option>
+      <mat-chip-option>Super Smash Bros</mat-chip-option>
+      <mat-chip-option>Zelda</mat-chip-option>
+    </mat-chip-listbox>
+
+    Privacy
+    <mat-card-subtitle>Before continuing make sure to read the <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Privacy Information Notice</a></mat-card-subtitle>
+    <section class="registration-form">
+      <mat-checkbox formControlName="privacy"> I have read the Privacy Information Notice</mat-checkbox>
+    </section>
+
+    <mat-card-actions>
+      <button type="submit" mat-raised-button color="primary" [disabled]="formGroup.invalid">Sign In</button>
+      <span *ngIf="formGroup.invalid">Invalid input</span>
     </mat-card-actions>
+    <!-- END OF FORM -->
+  </form>
   </mat-card>
+  <footer>
+    <mat-toolbar color="accent" class="title-container">
+      <span>Registration page made for the Axia Front-End Developers Course</span>
+    </mat-toolbar>
+  </footer>
 </body>
