@@ -8,16 +8,16 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 })
 export class HomepageRegistrationComponent {
 
-  // @Input()
-  // data =  {name: "", surname: "", email: "", dob: "", topics: [""], privacy: false}
+   @Input()
+   data =  {name: "", surname: "", email: "", dob: "", topics: [""], privacy: false}
 
   formGroup = new FormGroup({
-    name: new FormControl("", Validators.required),
-    surname: new FormControl("", Validators.required),
-    email: new FormControl("", [Validators.required, Validators.email]),
-    dob: new FormControl("", Validators.required),
-    topics: new FormControl([""], Validators.required),
-    privacy: new FormControl("", Validators.requiredTrue),
+    name: new FormControl(this.data.name, [Validators.required, Validators.minLength(3)]),
+    surname: new FormControl(this.data.surname, [Validators.required, Validators.minLength(3)]),
+    email: new FormControl(this.data.email, [Validators.required, Validators.email]),
+    dob: new FormControl(this.data.dob, Validators.required),
+    topics: new FormControl([this.data.topics], Validators.required),
+    privacy: new FormControl(this.data.privacy, Validators.requiredTrue),
   });
 
   get name(){
