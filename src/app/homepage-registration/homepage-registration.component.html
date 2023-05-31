@@ -39,23 +39,25 @@
     </mat-form-field>
 
     Topics
-    <mat-chip-listbox class="registration-form" aria-label="Topics" multiple="true" formControlName="topics">
-      <mat-chip-option>Animal Crossing</mat-chip-option>
-      <mat-chip-option>Fire Emblem</mat-chip-option>
-      <mat-chip-option>Pokemon</mat-chip-option>
-      <mat-chip-option>Splatoon</mat-chip-option>
-      <mat-chip-option>Super Mario</mat-chip-option>
-      <mat-chip-option>Super Smash Bros</mat-chip-option>
-      <mat-chip-option>Zelda</mat-chip-option>
-    </mat-chip-listbox>
+    <div class="chip-container">
+      <mat-chip-listbox class="registration-form" aria-label="Topics" multiple="true" formControlName="topics">
+        <mat-chip-option>Animal Crossing</mat-chip-option>
+        <mat-chip-option>Fire Emblem</mat-chip-option>
+        <mat-chip-option>Pokemon</mat-chip-option>
+        <mat-chip-option>Splatoon</mat-chip-option>
+        <mat-chip-option>Super Mario</mat-chip-option>
+        <mat-chip-option>Super Smash Bros</mat-chip-option>
+        <mat-chip-option>Zelda</mat-chip-option>
+      </mat-chip-listbox>
+    </div>
 
     Privacy
     <mat-card-subtitle>Before continuing make sure to read the <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Privacy Information Notice</a></mat-card-subtitle>
-    <section class="registration-form">
+    <section>
       <mat-checkbox formControlName="privacy"> I have read the Privacy Information Notice</mat-checkbox>
     </section>
 
-    <mat-card-actions>
+    <mat-card-actions align="end">
       <button type="submit" mat-raised-button color="primary" [disabled]="formGroup.invalid">Sign In</button>
       <span *ngIf="formGroup.invalid">Invalid input</span>
     </mat-card-actions>
